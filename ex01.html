@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio Tabela</title>
+</head>
+<body>
+    <form name="cadastro">
+        <label><input type="text" name="nome" placeholder="Nome"/></label>
+        <label><input type="number" name="idade" placeholder="idade" /></label> 
+        <label><input type="text" name="cidade" placeholder="cidade" /></label>
+        <input type="submit"/>
+        <input type="reset"/>
+    </form>
+    <br/>
+    <table style="border: 1px solid red"> 
+        <thead style="border: 1px solid green">
+            <th style="border:1px solid green">Nome</th>
+            <th style="border:1px solid green">Idade</th>
+            <th style="border:1px solid green">Cidade</th> 
+        </thead>
+        <tr style="border: 1px solid green">
+            <td style="border:1px solid green">Fulano</td>
+            <td style="border:1px solid green">23</td>
+            <td style="border:1px solid green">JUiz de Fora</td> 
+        </tr>
+        <tr style="border: 1px solid green">
+            <td style="border:1px solid green"> style="border:1px solid green"Beltrano</td>
+            <td style="border:1px solid green">19</td>
+            <td style="border:1px solid green" >Bicas</td> 
+        </tr>
+        <tr style="border: 1px solid green">
+            <td style="border:1px solid green">Ciclano</td>
+            <td style="border:1px solid green">19</td>
+            <td style="border:1px solid green">São João</td> 
+        </tr>
+        </tr>
+    </table>   
+    <script>
+        var formCadastro = document.forms.cadastro;
+        formCadastro.addEventListener("submit", processaCadastro) ;
+        var corpoTabela = document.querySelector("tbody");
+
+
+
+        function processaCadastro(e){
+            e.preventDefault();
+            var nome = formCadastro.nome.value;
+            var idade = Number(formCadastro.idade.value);
+            var cidade = formCadastro.cidade.value;
+
+            addLinha(nome,idade,cidade);
+        }
+
+        function addLinha(nome, idade, cidade){
+            var tdNome = document.createElement("td");
+            tdNome.textContent = nome;
+            var tdIdade = document.createElement("td");
+            tdIdade.textContent = idade;
+            var tdCidade = document.createElement("td");
+            tdCidade.textContent = cidade;
+
+            var trLinha = document.createElement("tr");
+            trLinha.appendChild(tdNome);
+            trLinha.appendChild(tdIdade);
+            trLinha.appendChild(tdCidade);
+            corpoTabela.appendChild(trLinha);
+
+
+        }
+    </script> 
+</body>
+</html>
